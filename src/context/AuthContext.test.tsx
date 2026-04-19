@@ -33,7 +33,7 @@ describe("AuthContext", () => {
   });
 
   it("registra un usuario y guarda la sesión en localStorage", async () => {
-    vi.stubGlobal("crypto", { randomUUID: () => "user-1" } as any);
+    vi.stubGlobal("crypto", { randomUUID: () => "user-1" } as unknown as Crypto);
 
     const { container, root } = await renderWithRoot(
       <AuthProvider>
