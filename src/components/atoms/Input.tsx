@@ -1,10 +1,10 @@
 import React from "react";
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> & {
   variant?: "primary" | "secondary";
   size?: "sm" | "md" | "lg";
   error?: boolean;
-}
+};
 
 export const Input: React.FC<InputProps> = ({ variant = "primary", size = "md", error = false, ...props }) => {
   const base = "rounded-lg border transition duration-200 focus:outline-none w-full bg-white";

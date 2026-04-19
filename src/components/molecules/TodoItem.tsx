@@ -1,8 +1,8 @@
 "use client";
-import { Checkbox } from "../atoms/Checkbox";
+import React from "react";
 import { Button } from "../atoms/Button";
 import { Icon } from "../atoms/Icon";
-import { Todo } from "@/src/types/todo";
+import { Todo } from "@/types/todo";
 
 interface TodoItemProps {
   todo: Todo;

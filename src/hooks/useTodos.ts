@@ -5,18 +5,14 @@ import { useAuth } from "../context/AuthContext";
 
 export const useTodos = () => {
   const { user } = useAuth();
-  const [todos, setTodos] = useState<Todo[]>([]);
-
-  // Cargar tareas del usuario al montar
-  useEffect(() => {
-    if (typeof window === "undefined") return;
+  const [todos, setTodos] = useState<Todo[]>(() => {
+    if (typeof window === "undefined") return [];
     if (user) {
       const saved = localStorage.getItem(`todos_${user.id}`);
-      setTodos(saved ? JSON.parse(saved) : []);
-    } else {
-      setTodos([]);
+      return saved ? JSON.parse(saved) : [];
     }
-  }, [user]);
+    return [];
+  });
 
   // Guardar tareas en localStorage cada vez que cambian
   useEffect(() => {
