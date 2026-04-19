@@ -9,6 +9,7 @@ export const useTodos = () => {
 
   // Cargar tareas del usuario al montar
   useEffect(() => {
+    if (typeof window === "undefined") return;
     if (user) {
       const saved = localStorage.getItem(`todos_${user.id}`);
       setTodos(saved ? JSON.parse(saved) : []);
@@ -19,9 +20,8 @@ export const useTodos = () => {
 
   // Guardar tareas en localStorage cada vez que cambian
   useEffect(() => {
-    if (user) {
-      localStorage.setItem(`todos_${user.id}`, JSON.stringify(todos));
-    }
+    if (typeof window === "undefined" || !user) return;
+    localStorage.setItem(`todos_${user.id}`, JSON.stringify(todos));
   }, [todos, user]);
 
   const addTodo = (text: string) => {
