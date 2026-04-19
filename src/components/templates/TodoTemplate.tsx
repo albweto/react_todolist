@@ -1,7 +1,7 @@
 "use client";
 import { TodoForm } from "../molecules/TodoForm";
 import { TodoList } from "../organisms/TodoList";
-import { Todo } from "@/src/types/todo";
+import { Todo } from "@/types/todo";
 import { Icon } from "../atoms/Icon";
 
 interface TodoTemplateProps {
